@@ -6,7 +6,7 @@ import request from "../utils/request.js";
  */
 export function getSwiperInfo() {
   const options = {
-    url: "/login/qr/key",
+    url: "/banner?type=3",
     showLoading: true,
   };
   return request(options);

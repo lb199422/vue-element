@@ -16,6 +16,7 @@ const request = function (options) {
   });
 
   let showLoading = options.showLoading ?? false;
+
   // 请求
   instance.interceptors.request.use(
     (config) => {
@@ -76,4 +77,18 @@ function closeLoading(showLoading) {
   }
 }
 
+/**
+ *  handleError
+ */
+
+function handleError(error) {
+  let message = "";
+  if (error && error.response) {
+    switch (error.response.status) {
+      case 404:
+        message = "路径不存在";
+        break;
+    }
+  }
+}
 export default request;
