@@ -56,12 +56,12 @@ export default {
     right: 0;
     bottom: 80px;
     display: flex;
-
     .aside {
       width: 200px;
     }
     .main {
       flex: 1;
+      overflow: auto;
     }
   }
 }

@@ -1,7 +1,9 @@
 <template>
   <div class="page-home">
     <BaseNav :nav-info="navInfo"></BaseNav>
-    <router-view></router-view>
+    <div class="home-container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -34,6 +36,10 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+          this.$message({
+            message: error,
+            type: "error",
+          });
         });
     },
   },
@@ -43,5 +49,9 @@ export default {
 <style lang="scss">
 .page-home {
   padding: 20px;
+  .home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
 </style>

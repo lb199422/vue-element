@@ -1,9 +1,16 @@
 <template>
-  <div class="base-footer">this is footer</div>
+  <div class="base-footer">
+    this is footer
+    <PlayBar></PlayBar>
+  </div>
 </template>
 
 <script>
+import PlayBar from "@/components/play/PlayBar";
 export default {
+  components: {
+    PlayBar,
+  },
   data() {
     return {};
   },
@@ -12,6 +19,7 @@ export default {
 
 <style scoped lang="scss">
 .base-footer {
+  box-sizing: border-box;
   width: 100%;
   height: 80px;
   background-color: #fff;

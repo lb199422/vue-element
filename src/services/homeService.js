@@ -11,3 +11,13 @@ export function getSwiperInfo() {
   };
   return request(options);
 }
+
+/**
+ * 获取推荐歌曲列表
+ *
+ */
+export function getPersonRecommendList() {
+  return request({
+    url: "/personalized",
+  });
+}
