@@ -1,6 +1,5 @@
 <template>
   <div class="base-footer">
-    this is footer
     <PlayBar></PlayBar>
   </div>
 </template>
