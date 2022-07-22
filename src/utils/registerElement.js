@@ -1,6 +1,6 @@
-import { Button, Carousel, CarouselItem, Message, Radio, Form, FormItem, Input, Select, Option, Row, Col, Slider } from "element-ui";
+import { Button, Carousel, CarouselItem, Message, Radio, Form, FormItem, Input, Select, Option, Row, Col, Slider, Drawer, Dialog, Upload, Tree, Table, TableColumn } from "element-ui";
 
-const elementsList = [Button, Carousel, CarouselItem, Radio, Form, FormItem, Input, Select, Option, Row, Col, Slider];
+const elementsList = [Button, Carousel, CarouselItem, Radio, Form, FormItem, Input, Select, Option, Row, Col, Slider, Drawer, Dialog, Upload, Tree, Table, TableColumn];
 
 export default (vue) => {
   elementsList.forEach((item) => {

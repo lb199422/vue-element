@@ -40,6 +40,10 @@ const routes = [
         path: "/video",
         component: () => import("@/views/video/Video.vue"),
       },
+      {
+        path: "/newTechnology",
+        component: () => import("@/views/newTechnology/NewTechnology.vue"),
+      },
     ],
   },
   {
