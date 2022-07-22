@@ -11,7 +11,9 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      msg: "this is test",
+    };
   },
 };
 </script>
