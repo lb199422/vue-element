@@ -253,6 +253,10 @@ export default {
     handleNodeClick() {},
   },
 };
+
+/**
+ * this is test
+ */
 </script>
 
 <style>
