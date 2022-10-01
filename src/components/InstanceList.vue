@@ -1,6 +1,6 @@
 <template>
   <div class="instance-list">
-    <div class="arrow-left arrow" v-if="this.instanceList.length > 7">
+    <div class="instance-list-left" v-if="this.instanceList.length > 7">
       <div class="arrow-content" @click="arrowClick('backward')">
         <i class="el-icon-arrow-left"></i>
       </div>
@@ -12,23 +12,20 @@
             {{ item.channelName }}
           </div>
           <div class="content">
-            状态：
             <span :style="{ color: statusStyle(item.status) }">
-              <!-- {{ transformDictByValue("report_status", item.state ? item.state + "" : item.status + "") }} -->
+              <!-- 状态： -->
               {{ item.state }}
             </span>
+            <span :style="{ color: '#52c41a' }">{{ item.needApproval || item.needReview ? "待处理" : "无处理事项" }} </span>
           </div>
         </div>
       </div>
     </div>
-    <div class="arrow-right arrow" v-if="this.instanceList.length > 7">
+    <div class="instance-list-right" v-if="this.instanceList.length > 7">
       <div class="arrow-content" @click="arrowClick('forward')">
         <i class="el-icon-arrow-right"></i>
       </div>
     </div>
-    <!-- <div class="toggle" @click="toggleClick" v-if="showToggle">
-            <i class="el-icon-arrow-down"></i>
-        </div> -->
   </div>
 </template>
 
@@ -72,7 +69,7 @@ export default {
   },
   methods: {
     instanceChange(item, index) {
-      this.currentInstanceId = item.id;
+      this.currentInstanceId = item.channelId;
       this.currentIndex = index;
       this.$emit("change", { item, index });
     },
@@ -97,15 +94,13 @@ export default {
         });
       }
     },
-    toggleClick() {
-      this.$emit("toggle", "expand");
-    },
   },
   mounted() {},
 };
 </script>
 
 <style scoped lang="scss">
+@import "@/scss/index.scss";
 .instance-list {
   font-size: 12px;
   color: #474747;
@@ -115,28 +110,26 @@ export default {
   padding-top: 10px;
   font-weight: 500;
   position: relative;
-  .arrow {
-    display: inline-block;
+  display: flex;
+  &-left,
+  &-right {
     box-sizing: border-box;
     text-align: center;
     width: 30px;
     padding: 0 5px;
-    vertical-align: top;
     &:hover {
       cursor: pointer;
     }
     .arrow-content {
-      display: inline-block;
       background-color: #f5f5f5;
+      border: 1px solid #fff;
       border-radius: 5px;
       width: 100%;
       line-height: 50px;
-      vertical-align: top;
     }
   }
   .instance-container {
     // padding: 0 5px;
-    box-sizing: border-box;
     white-space: nowrap;
     overflow-y: hidden;
     overflow-x: scroll;
@@ -144,7 +137,6 @@ export default {
     &::-webkit-scrollbar {
       display: none;
     }
-    display: inline-block;
     .instance-wrap {
       box-sizing: border-box;
       display: inline-block;
@@ -152,7 +144,7 @@ export default {
       width: calc(100% / 7);
       .instance-item {
         border-radius: 5px;
-        background-color: #f5f5f5;
+        background-color: $instanceBgColor;
         border: 1px solid #eee;
         padding: 5px 10px;
         text-overflow: hidden;
@@ -168,20 +160,15 @@ export default {
         }
         .content {
           text-align: center;
+          > span {
+            display: inline-block;
+            width: 50%;
+          }
         }
       }
       .instance-item.active {
-        background-color: #f5e8ea;
+        background-color: $instanceActiveBgColor;
       }
-    }
-  }
-  .toggle {
-    position: absolute;
-    right: 10px;
-    bottom: -10px;
-    font-size: 20px;
-    &:hover {
-      cursor: pointer;
     }
   }
 }
