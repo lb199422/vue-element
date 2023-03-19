@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import Footer from "@/components/footer/Footer.vue";
-import Header from "@/components/header/Header.vue";
-import AsideList from "@/components/AsideList.vue";
+import Footer from '@/components/footer/Footer.vue';
+import Header from '@/components/header/Header.vue';
+import AsideList from '@/components/AsideList.vue';
 
 export default {
   components: {
@@ -28,15 +28,15 @@ export default {
   data() {
     return {
       listInfo: [
-        { title: "发现音乐", path: "/home" },
-        { title: "视频", path: "/video" },
-        { title: "私人FMM", path: "/home" },
-        { title: "我的音乐", path: "/home" },
-        { title: "每日推荐", path: "/home" },
-        { title: "最近播放", path: "/home" },
-        { title: "我的收藏", path: "/home" },
-        { title: "创建的歌单", path: "/home" },
-        { title: "收藏的歌单", path: "/home" },
+        { title: '发现音乐', path: '/home' },
+        { title: '视频', path: '/video' },
+        { title: '私人FMM', path: '/home' },
+        { title: '我的音乐', path: '/home' },
+        { title: '每日推荐', path: '/home' },
+        { title: '最近播放', path: '/home' },
+        { title: '我的收藏', path: '/home' },
+        { title: '创建的歌单', path: '/home' },
+        { title: '收藏的歌单', path: '/home' },
       ],
     };
   },

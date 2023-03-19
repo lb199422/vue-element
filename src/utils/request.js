@@ -1,8 +1,8 @@
-import axios from "axios";
-import { getTokenAUTH } from "./auth";
-import { Loading, Message } from "element-ui";
+import axios from 'axios';
+import { getTokenAUTH } from './auth';
+import { Loading, Message } from 'element-ui';
 
-const BASEURL = "http://192.168.31.64:3000";
+const BASEURL = '/api';
 
 const LoadingInstance = {
   count: 0,
@@ -20,9 +20,9 @@ const request = function (options) {
   // 请求
   instance.interceptors.request.use(
     (config) => {
-      console.log("this is config", config);
+      console.log('this is config', config);
       // 设置token
-      if (getTokenAUTH() && typeof window !== "undefined") {
+      if (getTokenAUTH() && typeof window !== 'undefined') {
         config.headers.Authorization = getTokenAUTH();
       }
       // loading
@@ -30,7 +30,7 @@ const request = function (options) {
         LoadingInstance.count++;
         if (LoadingInstance.count === 1) {
           LoadingInstance.target = Loading.service({
-            text: "加载中...",
+            text: '加载中...',
           });
         }
       }
@@ -48,10 +48,10 @@ const request = function (options) {
     ({ status, config, headers, data }) => {
       // 关闭loading
       closeLoading(showLoading);
-      console.log("this is response", data);
+      console.log('this is response', data);
       if (data.code !== 200 && data) {
         Message({
-          type: "error",
+          type: 'error',
           message: data.message,
         });
       }
@@ -82,11 +82,11 @@ function closeLoading(showLoading) {
  */
 
 function handleError(error) {
-  let message = "";
+  let message = '';
   if (error && error.response) {
     switch (error.response.status) {
       case 404:
-        message = "路径不存在";
+        message = '路径不存在';
         break;
     }
   }
