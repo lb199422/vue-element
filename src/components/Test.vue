@@ -18,14 +18,21 @@
         </div>
       </div>
     </div>
+    <div>时间选择器 <YearRange v-model="time" /></div>
   </div>
 </template>
 
 <script>
 import request from "@/utils/request";
+import YearRange from "@/components/YearRange";
 export default {
+  components: {
+    YearRange,
+  },
   data() {
-    return {};
+    return {
+      time: "",
+    };
   },
   created() {
     // request({
