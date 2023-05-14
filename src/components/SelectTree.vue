@@ -231,6 +231,12 @@ export default {
     handleFocus() {
       this.filterMethod('');
     },
+    getSelect() {
+      return this.$refs['select'];
+    },
+    getTree() {
+      return this.$refs['tree'];
+    },
   },
 };
 </script>
