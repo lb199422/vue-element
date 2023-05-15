@@ -2,7 +2,12 @@
   <div class="base-swiper" ref="base-swiper">
     <el-carousel :interval="4000" type="card" height="200px" width="1080px">
       <el-carousel-item v-for="(item, index) in swiperInfoList" :key="index">
-        <img :src="item.pic" alt="" class="thumb" @click="handleClick(item.bannerId)" />
+        <img
+          :src="item.pic"
+          alt=""
+          class="thumb"
+          @click="handleClick(item.bannerId)"
+        />
       </el-carousel-item>
     </el-carousel>
   </div>
