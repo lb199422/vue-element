@@ -8,11 +8,14 @@
 </template>
 
 <script>
-import Swiper from "@/components/Swiper";
-import SongList from "@/components/SongList";
-import TabTitle from "@/components/TabTitle";
+import Swiper from '@/components/Swiper';
+import SongList from '@/components/SongList';
+import TabTitle from '@/components/TabTitle';
 
-import { getSwiperInfo, getPersonRecommendList } from "@/services/homeService.js";
+import {
+  getSwiperInfo,
+  getPersonRecommendList,
+} from '@/services/homeService.js';
 export default {
   components: {
     Swiper,
@@ -36,12 +39,11 @@ export default {
     getRecommendData() {
       getPersonRecommendList()
         .then((res) => {
-          console.log(res);
           this.recommendSongList = res.result;
         })
         .catch((error) => {
           this.$message({
-            type: "error",
+            type: 'error',
             message: error,
           });
         });
