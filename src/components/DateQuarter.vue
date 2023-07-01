@@ -1,6 +1,6 @@
 <template>
   <!--  基于el-select 扩展季度选择器 -->
-  <!-- 季度 年 范围选择 -->
+  <!-- 扩展年度范围选择器 季度 半年 季度选择器 -->
   <div>
     <el-select v-model="date" placeholder="">
       <el-option
