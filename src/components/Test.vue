@@ -28,8 +28,9 @@
         </div>
       </div>
     </div>
-    <div>时间选择器 <YearRange v-model="time" /></div>
-
+    <div>时间选择器 <YearRange v-model="time" />{{ time }}</div>
+    <div><HalfYearRange v-model="halfYear" /></div>
+    <div><QuarterRange v-model="quarterRange" /> {{ quarterRange }}</div>
     <div>selectTree</div>
 
     <SelectTree
@@ -55,16 +56,22 @@
 
 <script>
 import request from '@/utils/request';
-import YearRange from '@/components/YearRange';
+import YearRange from '@/components/YearRange.vue';
 import SelectTree from '@/components/SelectTree.vue';
+import HalfYearRange from '@/components/HalfYearRange.vue';
+import QuarterRange from '@/components/QuarterRange.vue';
 export default {
   components: {
     YearRange,
     SelectTree,
+    HalfYearRange,
+    QuarterRange,
   },
   data() {
     return {
-      time: '',
+      time: [],
+      halfYear: [],
+      quarterRange: [],
       tree: '',
       treeData: [
         {
@@ -102,18 +109,7 @@ export default {
       },
     };
   },
-  created() {
-    // request({
-    //   url: "/get_user",
-    //   method: "get",
-    // })
-    //   .then((res) => {
-    //     console.log(res, "test");
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-  },
+  created() {},
   methods: {
     handleClick(index) {
       console.log(index, this.$refs[`item-${index}`][0].offsetTop);

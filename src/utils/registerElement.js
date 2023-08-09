@@ -7,6 +7,8 @@ import {
   Tree,
   Select,
   Option,
+  Popover,
+  Icon,
 } from 'element-ui';
 
 const elementsList = [
@@ -17,6 +19,8 @@ const elementsList = [
   Tree,
   Select,
   Option,
+  Popover,
+  Icon,
 ];
 
 export default (vue) => {
