@@ -1,11 +1,5 @@
 <template>
-  <div>
-    <span>this is testss </span>
-    <el-button type="default">this is test</el-button>
-    <el-button type="success">this is test</el-button>
-    <i class="el-icon-edit"></i>
-    <el-button type="primary" icon="el-icon-search">搜索</el-button>
-
+  <div class="test-container">
     <div class="content-container">
       <div class="container" ref="container">
         <div
@@ -44,13 +38,9 @@
       :collapse-tags="true"
       :tree-check-strictly="true"
     />
+    <el-button type="primary" @click="handleTest">测试</el-button>
     <div>selectTree</div>
-    <div>selectTree</div>
-    <div>selectTree</div>
-    <div>selectTree</div>
-    <div>selectTree</div>
-    <div>selectTree</div>
-    <div>selectTree</div>
+    <CommonDrawer ref="common-drawer" />
   </div>
 </template>
 
@@ -60,12 +50,14 @@ import YearRange from '@/components/YearRange.vue';
 import SelectTree from '@/components/SelectTree.vue';
 import HalfYearRange from '@/components/HalfYearRange.vue';
 import QuarterRange from '@/components/QuarterRange.vue';
+import CommonDrawer from '@/components/CommonDrawer.vue';
 export default {
   components: {
     YearRange,
     SelectTree,
     HalfYearRange,
     QuarterRange,
+    CommonDrawer,
   },
   data() {
     return {
@@ -75,7 +67,8 @@ export default {
       tree: '',
       treeData: [
         {
-          label: '1',
+          label:
+            '1hishishigehigheihgiehigeijgiejijishogehioghjiohgiehgioehiogheiohgie',
           id: 1,
           children: [
             {
@@ -120,6 +113,9 @@ export default {
         behavior: 'smooth',
       });
     },
+    handleTest() {
+      this.$refs['common-drawer'].show();
+    },
   },
 };
 </script>
@@ -145,5 +141,8 @@ export default {
 .icon {
   width: 20px;
   height: 20px;
+}
+.test-container {
+  padding: 20px;
 }
 </style>
