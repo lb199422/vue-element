@@ -10,6 +10,7 @@ import {
   Popover,
   Icon,
   Drawer,
+  Input,
 } from 'element-ui';
 
 const elementsList = [
@@ -23,6 +24,7 @@ const elementsList = [
   Popover,
   Icon,
   Drawer,
+  Input,
 ];
 
 export default (vue) => {

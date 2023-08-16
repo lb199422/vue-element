@@ -41,6 +41,8 @@
     <el-button type="primary" @click="handleTest">测试</el-button>
     <div>selectTree</div>
     <CommonDrawer ref="common-drawer" />
+    <RenderTest v-model="test" />
+    {{ test }}
   </div>
 </template>
 
@@ -51,6 +53,7 @@ import SelectTree from '@/components/SelectTree.vue';
 import HalfYearRange from '@/components/HalfYearRange.vue';
 import QuarterRange from '@/components/QuarterRange.vue';
 import CommonDrawer from '@/components/CommonDrawer.vue';
+import RenderTest from '@/components/RenderTest.vue';
 export default {
   components: {
     YearRange,
@@ -58,6 +61,7 @@ export default {
     HalfYearRange,
     QuarterRange,
     CommonDrawer,
+    RenderTest,
   },
   data() {
     return {
@@ -100,6 +104,7 @@ export default {
         label: 'label',
         children: 'children',
       },
+      test: '',
     };
   },
   created() {},
