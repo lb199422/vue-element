@@ -33,7 +33,7 @@
       :props="treeProps"
       :node-key="treeNodeKey"
       showLine
-      :showLabelLine="false"
+      :show-label-line="true"
       highlight-current
       :expand-on-click-node="false"
       @current-change="handleCurrentChange"

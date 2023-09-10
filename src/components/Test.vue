@@ -1,6 +1,6 @@
 <template>
   <div class="test-container">
-    <div class="content-container">
+    <!-- <div class="content-container">
       <div class="container" ref="container">
         <div
           v-for="(item, index) in 100"
@@ -21,7 +21,7 @@
           {{ index }}
         </div>
       </div>
-    </div>
+    </div> -->
     <div>时间选择器 <YearRange v-model="time" />{{ time }}</div>
     <div><HalfYearRange v-model="halfYear" /></div>
     <div><QuarterRange v-model="quarterRange" /> {{ quarterRange }}</div>
@@ -43,17 +43,19 @@
     <CommonDrawer ref="common-drawer" />
     <RenderTest v-model="test" />
     {{ test }}
+
+    <Jsx :title-level="1">测试jsx</Jsx> 测试
   </div>
 </template>
 
 <script>
-import request from '@/utils/request';
 import YearRange from '@/components/YearRange.vue';
 import SelectTree from '@/components/SelectTree.vue';
 import HalfYearRange from '@/components/HalfYearRange.vue';
 import QuarterRange from '@/components/QuarterRange.vue';
 import CommonDrawer from '@/components/CommonDrawer.vue';
 import RenderTest from '@/components/RenderTest.vue';
+import Jsx from '@/components/Jsx.vue';
 export default {
   components: {
     YearRange,
@@ -62,6 +64,7 @@ export default {
     QuarterRange,
     CommonDrawer,
     RenderTest,
+    Jsx,
   },
   data() {
     return {
