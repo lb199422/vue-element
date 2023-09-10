@@ -1,4 +1,5 @@
 <script>
+import { Divider } from 'element-ui';
 export default {
   data() {
     return {};
@@ -10,7 +11,8 @@ export default {
     },
   },
   render(h) {
-    return h('h' + this.titleLevel, this.$slots.default);
+    // return h('h' + this.titleLevel, this.$slots.default);
+    return <div>{this.$slots.default}</div>; // jsx 写法
   },
 };
 </script>
@@ -18,7 +20,4 @@ export default {
 
 
 <style lang="scss" scoped>
-.test {
-  // height: 30px;
-}
 </style>
