@@ -1,5 +1,4 @@
 <script>
-import { Divider } from 'element-ui';
 export default {
   data() {
     return {};
