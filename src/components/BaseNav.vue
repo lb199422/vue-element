@@ -1,6 +1,12 @@
 <template>
   <div class="base-nav">
-    <div class="nav-item" v-for="(item, index) in navInfo" :key="index" @click="navClick(item.path, index)" :class="{ active: currentIndex === index }">
+    <div
+      class="nav-item"
+      v-for="(item, index) in navInfo"
+      :key="index"
+      @click="navClick(item.path, index)"
+      :class="{ active: currentIndex === index }"
+    >
       {{ item.title }}
     </div>
   </div>
@@ -46,7 +52,7 @@ export default {
       font-weight: bold;
       position: relative;
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         right: 0;

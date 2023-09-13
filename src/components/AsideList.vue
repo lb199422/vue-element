@@ -1,6 +1,12 @@
 <template>
   <div class="aside-list">
-    <div class="list-item" v-for="(item, index) in listInfo" :key="index" @click="itemClick(item.path, index)" :class="{ active: currentIndex === index }">
+    <div
+      class="list-item"
+      v-for="(item, index) in listInfo"
+      :key="index"
+      @click="itemClick(item.path, index)"
+      :class="{ active: currentIndex === index }"
+    >
       <span>{{ item.title }}</span>
     </div>
   </div>

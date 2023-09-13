@@ -1,11 +1,15 @@
 <template>
   <div class="song-list">
-    <SongItem v-for="(item, index) in songList" :key="index" :song-info="item"></SongItem>
+    <SongItem
+      v-for="(item, index) in songList"
+      :key="index"
+      :song-info="item"
+    ></SongItem>
   </div>
 </template>
 
 <script>
-import SongItem from "@/components/SongItem";
+import SongItem from '@/components/SongItem';
 export default {
   components: {
     SongItem,

@@ -26,7 +26,7 @@ export default {
   },
   filters: {
     playCount(val) {
-      return parseInt(val / 10000) + "万";
+      return parseInt(val / 10000) + '万';
     },
   },
   data() {
