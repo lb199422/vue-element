@@ -57,3 +57,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 // babel jsx  render  使用创建组件  render 函数创建组件  form  
 
 
+// 拖拽 插件
