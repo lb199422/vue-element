@@ -15,16 +15,23 @@
         <!-- <div class="tool-bar"></div> -->
         <!-- 中间内容 -->
         <div class="main">
-          <div class="main-left"></div>
+          <div class="main-left">
+            <div
+              :class="item.type"
+              class="graphics"
+              v-for="(item, index) in templateList"
+              :key="index"
+            ></div>
+          </div>
           <!-- 容器 -->
           <div class="main-center panel-body points flow_chart" id="flow">
             <!-- 根据数据生成节点 -->
             <div
-              :ref="item._id"
-              v-for="item in flowData.point"
-              :key="item._id"
-              :id="item._id"
-              :class="`point chart_act_${item.status} ${item.name}`"
+              :ref="item.id"
+              v-for="item in nodes"
+              :key="item.id"
+              :id="item.id"
+              :class="`point ${item.name}`"
               @click="itemClick(item)"
             >
               {{ item.name }}
@@ -56,6 +63,7 @@ import {
   FlowchartConnector,
   DotEndpoint,
 } from '@jsplumb/browser-ui';
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
   components: {
@@ -103,10 +111,25 @@ export default {
           ['58c21da83819d56d6876391a', '58c63ecf3819d5a22f2c7f24'],
         ],
       },
-      templateList: [],
+      templateList: [
+        {
+          type: 'rectangle',
+        },
+        {
+          type: 'round',
+        },
+        {
+          type: 'oval',
+        },
+        {
+          type: 'parallelogram',
+        },
+      ],
       itemData: {},
       graphicsList: [],
       jsplumbInstance: null,
+      nodes: [],
+      lines: [],
     };
   },
   computed: {
@@ -134,50 +157,8 @@ export default {
       this.$refs['yb-drawer'].show();
     },
     save() {
-      console.log(this.jsplumbInstance.getConnections(), this.jsplumbInstance);
-      this.flowData.point.push({
-        _id: '58c21d713819d56d68763913',
-        name: '测试',
-        status: '1',
-      });
-      // 添加节点
-      this.$nextTick(() => {
-        this.jsplumbInstance.addEndpoint(
-          document.getElementById('58c21d713819d56d68763913'),
-          {
-            anchor: 'Top',
-            source: true,
-            target: true,
-          }
-        );
-        this.jsplumbInstance.addEndpoint(
-          document.getElementById('58c21d713819d56d68763913'),
-          {
-            anchor: 'Right',
-            source: true,
-            target: true,
-          }
-        );
-        this.jsplumbInstance.addEndpoint(
-          document.getElementById('58c21d713819d56d68763913'),
-          {
-            anchor: 'Bottom',
-            source: true,
-            target: true,
-          }
-        );
-        this.jsplumbInstance.addEndpoint(
-          document.getElementById('58c21d713819d56d68763913'),
-          {
-            anchor: 'Left',
-            source: true,
-            target: true,
-          }
-        );
-        this.$refs['58c21d713819d56d68763913'][0].style.left = 20 + 'px';
-        this.$refs['58c21d713819d56d68763913'][0].style.top = 20 + 'px';
-        this.jsplumbInstance.repaintEverything();
-      });
+      this.addGraphics();
+      this.jsplumbInstance.repaintEverything();
       // deleteEveryConnection() 删除所有连接
     },
     close() {
@@ -197,14 +178,16 @@ export default {
         maxConnections: -1,
         endpoint: {
           type: DotEndpoint.type,
+          source: true,
+          target: true,
           options: {
             radius: 6,
           },
         },
-        endpointStyle: { fill: '#00aaaa' },
+        endpointStyle: { fill: '#00aaaa', radius: 5, stroke: '#aab7c4' },
         endpointHoverStyle: { fill: 'red' },
         paintStyle: { strokeWidth: 2, stroke: '#00aaaa' },
-        hoverPaintStyle: {},
+        hoverPaintStyle: null,
         dragOptions: { cursor: 'pointer', zIndex: 5000 },
         connectionOverlays: [
           {
@@ -228,57 +211,61 @@ export default {
           },
         ],
       });
-
       this.jsplumbInstance = instance;
-      instance.batch(() => {
-        // init point
-        flowData.point.forEach((point) => {
-          instance.addEndpoint(document.getElementById(point._id), {
-            anchor: 'Top',
-            source: true,
-            target: true,
-          });
-          instance.addEndpoint(document.getElementById(point._id), {
-            anchor: 'Right',
-            source: true,
-            target: true,
-          });
-          instance.addEndpoint(document.getElementById(point._id), {
-            anchor: 'Bottom',
-            source: true,
-            target: true,
-          });
-          instance.addEndpoint(document.getElementById(point._id), {
-            anchor: 'Left',
-            source: true,
-            target: true,
-          });
-        });
-
-        // 连接
-        flowData.line.forEach((line) => {
-          instance.connect({
-            source: document.getElementById(`${line[0]}`),
-            target: document.getElementById(`${line[1]}`),
-            anchors: ['Bottom', 'Top'],
-          });
-        });
-
-        // 位置
-        flowData.point.forEach((point, index) => {
-          this.$refs[point._id][0].style.left =
-            flowData.location[index][1] * 20 + 'px';
-          this.$refs[point._id][0].style.top =
-            flowData.location[index][2] * 20 + 'px';
-        });
-      });
+      instance.batch(() => {});
       // 监听连接点击事件
       instance.bind(EVENT_CONNECTION_CLICK, (p) => {
         console.log(p);
         // this.jsplumbInstance.deleteConnection(p);
       });
     },
-
+    // 添加图形
+    addGraphics() {
+      let id = uuidv4();
+      let node = {
+        id,
+        label: '',
+        location: {
+          left: 10,
+          top: 10,
+        },
+      };
+      this.nodes.push(node);
+      this.$nextTick(() => {
+        let ele = document.getElementById(id);
+        this.jsplumbInstance.addEndpoint(ele, {
+          anchors: 'Top',
+          source: true,
+          target: true,
+        });
+        this.jsplumbInstance.addEndpoint(ele, {
+          anchor: 'Right',
+          source: true,
+          target: true,
+        });
+        this.jsplumbInstance.addEndpoint(ele, {
+          anchor: 'Bottom',
+          source: true,
+          target: true,
+        });
+        this.jsplumbInstance.addEndpoint(ele, {
+          anchor: 'Left',
+          source: true,
+          target: true,
+        });
+        this.$refs[id][0].style.left = node.location.left + 'px';
+        this.$refs[id][0].style.top = node.location.top + 'px';
+        this.jsplumbInstance.repaintEverything();
+      });
+    },
+    // 添加line
+    addLine(line) {
+      this.jsplumbInstance.connect({
+        source: document.getElementById(line.source),
+        target: document.getElementById(line.target),
+        anchors: ['Bottom', 'Top'],
+      });
+    },
     itemClick(item) {
       this.itemData = item;
     },
@@ -345,10 +332,6 @@ export default {
   z-index: 24;
   cursor: pointer;
   box-shadow: 2px 2px 19px #aaa;
-  -o-box-shadow: 2px 2px 19px #aaa;
-  -webkit-box-shadow: 2px 2px 19px #aaa;
-  -moz-box-shadow: 2px 2px 19px #aaa;
-  -moz-border-radius: 0.5em;
   border-radius: 0.5em;
   position: absolute;
   color: black;
@@ -371,5 +354,44 @@ export default {
 
 ::v-deep .jtk-endpoint {
   cursor: pointer;
+}
+
+.graphics {
+  background-color: white;
+  border: 1px solid #346789;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 19px #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: box-shadow 0.15s ease-in;
+  margin: 20px auto;
+  padding: 0.5em;
+}
+.oval {
+  width: 80px;
+  height: 40px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+.parallelogram {
+  width: 80px;
+  height: 40px;
+  transform: skewX(-20deg);
+}
+.round {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.rectangle {
+  border-radius: 0.5em;
+  padding: 0.5em;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
 }
 </style>
