@@ -31,7 +31,7 @@
               v-for="item in nodes"
               :key="item.id"
               :id="item.id"
-              :class="`point ${item.name}`"
+              :class="`oval graphics item`"
               @click="itemClick(item)"
             >
               {{ item.name }}
@@ -316,6 +316,9 @@ export default {
   overflow: auto;
   height: 100%;
   user-select: none;
+  .item {
+    position: absolute;
+  }
 }
 
 ::v-deep .points .point:hover,
@@ -366,7 +369,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   transition: box-shadow 0.15s ease-in;
-  margin: 20px auto;
+  // margin: 20px auto;
   padding: 0.5em;
 }
 .oval {
