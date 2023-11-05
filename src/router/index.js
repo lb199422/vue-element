@@ -34,6 +34,10 @@ const routes = [
             path: '/home/singerlist',
             component: () => import('@/views/home/singerList/SingerList.vue'),
           },
+          {
+            path: '/flow',
+            component: () => import('@/views/flow/index.vue'),
+          },
         ],
       },
       {

@@ -54,7 +54,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 // uniapp /taro vue2 vue3 vue-ts
 
 // 50css leetcode 坚持 （每周最少一个组件模仿输出）
-// babel jsx  render  使用创建组件  render 函数创建组件  form  
-
+// babel jsx render 使用创建组件 render 函数创建组件 form
 
 // 拖拽 插件

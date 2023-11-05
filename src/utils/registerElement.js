@@ -11,6 +11,8 @@ import {
   Icon,
   Drawer,
   Input,
+  Form,
+  FormItem,
 } from 'element-ui';
 
 const elementsList = [
@@ -25,6 +27,8 @@ const elementsList = [
   Icon,
   Drawer,
   Input,
+  Form,
+  FormItem,
 ];
 
 export default (vue) => {
