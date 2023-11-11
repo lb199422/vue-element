@@ -5,7 +5,7 @@
       :size="size"
       :title="title"
       :show-btn="showButton"
-      @close="close"
+      @cancel="close"
       @save="save"
       @opened="opened"
       :destroy-on-close="true"
@@ -21,6 +21,7 @@
               class="graphics"
               v-for="(item, index) in templateList"
               :key="index"
+              @click="addGraphics(item.type)"
             ></div>
           </div>
           <!-- 容器 -->
@@ -31,7 +32,7 @@
               v-for="item in nodes"
               :key="item.id"
               :id="item.id"
-              :class="`oval graphics item`"
+              :class="`${item.type} graphics item`"
               @click="itemClick(item)"
             >
               {{ item.name }}
@@ -165,6 +166,7 @@ export default {
       this.$refs['yb-drawer'].close();
     },
     opened() {
+      console.log('opened');
       ready(() => {
         this.createFlow(this.flowData);
       });
@@ -176,16 +178,17 @@ export default {
           type: FlowchartConnector.type,
         },
         maxConnections: -1,
-        endpoint: {
-          type: DotEndpoint.type,
-          source: true,
-          target: true,
-          options: {
-            radius: 6,
-          },
-        },
+        // endpoint: {
+        //   type: DotEndpoint.type,
+        //   source: true,
+        //   target: true,
+        //   options: {
+        //     radius: 6,
+        //     cssClass: 'test',
+        //   },
+        // },
         endpointStyle: { fill: '#00aaaa', radius: 5, stroke: '#aab7c4' },
-        endpointHoverStyle: { fill: 'red' },
+        endpointHoverStyle: { fill: '#00aaaa' },
         paintStyle: { strokeWidth: 2, stroke: '#00aaaa' },
         hoverPaintStyle: null,
         dragOptions: { cursor: 'pointer', zIndex: 5000 },
@@ -220,7 +223,7 @@ export default {
       });
     },
     // 添加图形
-    addGraphics() {
+    addGraphics(type) {
       let id = uuidv4();
       let node = {
         id,
@@ -229,27 +232,57 @@ export default {
           left: 10,
           top: 10,
         },
+        type,
       };
       this.nodes.push(node);
       this.$nextTick(() => {
         let ele = document.getElementById(id);
         this.jsplumbInstance.addEndpoint(ele, {
-          anchors: 'Top',
+          anchor: 'Left',
+          endpoint: {
+            type: DotEndpoint.type,
+            options: {
+              radius: 6,
+              cssClass: 'test',
+            },
+          },
+          source: true,
+          target: true,
+        });
+        this.jsplumbInstance.addEndpoint(ele, {
+          anchor: 'Top',
+          endpoint: {
+            type: DotEndpoint.type,
+            options: {
+              radius: 6,
+              cssClass: 'test',
+            },
+          },
           source: true,
           target: true,
         });
         this.jsplumbInstance.addEndpoint(ele, {
           anchor: 'Right',
+          endpoint: {
+            type: DotEndpoint.type,
+            options: {
+              radius: 6,
+              cssClass: 'test',
+              hoverClass: 'hover',
+            },
+          },
           source: true,
           target: true,
         });
         this.jsplumbInstance.addEndpoint(ele, {
           anchor: 'Bottom',
-          source: true,
-          target: true,
-        });
-        this.jsplumbInstance.addEndpoint(ele, {
-          anchor: 'Left',
+          endpoint: {
+            type: DotEndpoint.type,
+            options: {
+              radius: 6,
+              cssClass: 'test',
+            },
+          },
           source: true,
           target: true,
         });
@@ -396,5 +429,12 @@ export default {
   width: 80px;
   height: 40px;
   line-height: 40px;
+}
+
+::v-deep .test {
+  opacity: 0;
+}
+::v-deep .test:hover {
+  opacity: 1;
 }
 </style>
