@@ -1,4 +1,4 @@
-import request from "../utils/request.js";
+import request from '../utils/request.js';
 
 /**
  *
@@ -6,7 +6,7 @@ import request from "../utils/request.js";
  */
 export function getSwiperInfo() {
   const options = {
-    url: "/banner?type=3",
+    url: '/banner?type=3',
     showLoading: true,
   };
   return request(options);
@@ -18,6 +18,6 @@ export function getSwiperInfo() {
  */
 export function getPersonRecommendList() {
   return request({
-    url: "/personalized",
+    url: '/personalized',
   });
 }

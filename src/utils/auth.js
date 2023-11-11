@@ -1,11 +1,11 @@
 export function getTokenAUTH() {
-  return localStorage.getItem("TokenAUTH");
+  return localStorage.getItem('TokenAUTH');
 }
 
 export function removeTokenAUTH() {
-  localStorage.removeItem("TokenAUTH");
+  localStorage.removeItem('TokenAUTH');
 }
 
 export function setTokenAUTH(data) {
-  localStorage.setItem("TokenAUth", data);
+  localStorage.setItem('TokenAUth', data);
 }
