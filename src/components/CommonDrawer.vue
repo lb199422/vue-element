@@ -20,21 +20,15 @@
       <el-button
         v-if="showSave"
         type="primary"
-        size="medium"
         @click="handleSave"
         :loading="loading"
       >
         {{ submitText || '保存' }}
       </el-button>
-      <el-button
-        v-if="temporaryBtn"
-        type="primary"
-        size="medium"
-        @click="temporarySave"
-      >
+      <el-button v-if="temporaryBtn" type="primary" @click="temporarySave">
         {{ temporaryText || '临时保存' }}
       </el-button>
-      <el-button @click="handleCancel" size="medium" type="default">
+      <el-button @click="handleCancel" type="default">
         {{ cancelText || '取消' }}
       </el-button>
     </div>

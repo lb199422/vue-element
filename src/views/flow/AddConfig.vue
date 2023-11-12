@@ -75,43 +75,6 @@ export default {
       currentType: '',
       size: '100%',
       showButton: true,
-      flowData: {
-        point: [
-          {
-            _id: '58c21d713819d56d68763918',
-            name: 'MoeLove',
-            status: '0',
-          },
-          {
-            _id: '58c21d803819d56d68763919',
-            name: 'Moe',
-            status: '1',
-          },
-          {
-            _id: '58c21da83819d56d6876391a',
-            name: 'Love',
-            status: '0',
-          },
-          {
-            _id: '58c63ecf3819d5a22f2c7f24',
-            name: 'TaoBeier',
-            status: '1',
-          },
-        ],
-        location: [
-          ['Moe', 1, 10],
-          ['Love', 4, 24],
-          ['TaoBeier', 4, 14],
-          ['TaoBeier', 20, 24],
-          ['MoeLove', 1, 1],
-        ],
-        line: [
-          ['58c21d713819d56d68763918', '58c21d803819d56d68763919'],
-          ['58c21d803819d56d68763919', '58c21da83819d56d6876391a'],
-          ['58c21d803819d56d68763919', '58c63ecf3819d5a22f2c7f24'],
-          ['58c21da83819d56d6876391a', '58c63ecf3819d5a22f2c7f24'],
-        ],
-      },
       templateList: [
         {
           type: 'rectangle',
@@ -195,7 +158,7 @@ export default {
         connectionOverlays: [
           {
             type: 'Arrow',
-            options: { location: 0.9, length: 8, width: 8 },
+            options: { location: 1, length: 8, width: 8 },
           },
           {
             type: 'Label',
@@ -436,5 +399,11 @@ export default {
 }
 ::v-deep .test:hover {
   opacity: 1;
+}
+
+.main-left {
+  .graphics {
+    margin: 15px auto;
+  }
 }
 </style>

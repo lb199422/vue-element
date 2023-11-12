@@ -35,5 +35,7 @@ export default (vue) => {
   elementsList.forEach((item) => {
     vue.use(item);
   });
+  // 设置默认按钮大小
+  vue.prototype.$ELEMENT = { size: 'small' };
   vue.prototype.$message = Message;
 };

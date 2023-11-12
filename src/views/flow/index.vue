@@ -1,8 +1,14 @@
 <template>
   <div>
     <AddConfig ref="add-config" />
-    <el-button type="primary" @click="handleClick('view', {})">查看</el-button>
-    <el-button type="primary" @click="handleClick('edit', {})">编辑</el-button>
+    <div>
+      <el-button type="default" @click="handleClick('view', {})">
+        查看
+      </el-button>
+      <el-button type="primary" @click="handleClick('edit', {})">
+        编辑
+      </el-button>
+    </div>
   </div>
 </template>
 
