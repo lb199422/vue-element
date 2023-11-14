@@ -45,6 +45,7 @@
     {{ test }}
 
     <Jsx :title-level="1">测试jsx</Jsx> 测试
+    <CommonDescription :description-list="descriptionList" />
   </div>
 </template>
 
@@ -56,6 +57,7 @@ import QuarterRange from '@/components/QuarterRange.vue';
 import CommonDrawer from '@/components/CommonDrawer.vue';
 import RenderTest from '@/components/RenderTest.vue';
 import Jsx from '@/components/Jsx.vue';
+import CommonDescription from '@/components/CommonDescription.vue';
 export default {
   components: {
     YearRange,
@@ -65,6 +67,7 @@ export default {
     CommonDrawer,
     RenderTest,
     Jsx,
+    CommonDescription,
   },
   data() {
     return {
@@ -108,6 +111,71 @@ export default {
         children: 'children',
       },
       test: '',
+      descriptionList: [
+        {
+          label: '姓名',
+          value: '1',
+          valueText: '战鹰',
+          type: 'text',
+          isShow: 1,
+        },
+        {
+          label: '姓名',
+          value: '1',
+          valueText: '战鹰',
+          type: 'text',
+          isShow: 1,
+        },
+        {
+          label: '姓名',
+          value: '1',
+          valueText: '战鹰',
+          type: 'text',
+          isShow: 1,
+        },
+        {
+          label: '姓名',
+          value: '1',
+          valueText: '连笑',
+          type: 'text',
+          isShow: 1,
+        },
+        {
+          label: '姓名',
+          value: '1',
+          valueText: '战鹰',
+          type: 'text',
+          isShow: 2,
+        },
+        {
+          label: '姓名',
+          value: '1',
+          valueText: '战鹰',
+          type: 'text',
+          isShow: 1,
+        },
+        {
+          label: '姓名',
+          value: '1',
+          valueText: '战鹰',
+          type: 'text',
+          isShow: 1,
+        },
+        {
+          label: '姓名',
+          value: '1',
+          valueText: '战鹰',
+          type: 'text',
+          isShow: 1,
+        },
+        {
+          label: '姓名',
+          value: '1',
+          valueText: '战鹰',
+          type: 'text',
+          isShow: 1,
+        },
+      ],
     };
   },
   created() {},

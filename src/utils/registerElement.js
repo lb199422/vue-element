@@ -13,6 +13,8 @@ import {
   Input,
   Form,
   FormItem,
+  Descriptions,
+  DescriptionsItem,
 } from 'element-ui';
 
 const elementsList = [
@@ -29,6 +31,8 @@ const elementsList = [
   Input,
   Form,
   FormItem,
+  Descriptions,
+  DescriptionsItem,
 ];
 
 export default (vue) => {

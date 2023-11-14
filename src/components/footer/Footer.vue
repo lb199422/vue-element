@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import PlayBar from "@/components/play/PlayBar";
+import PlayBar from '@/components/play/PlayBar';
 export default {
   components: {
     PlayBar,
