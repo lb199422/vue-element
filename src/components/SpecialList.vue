@@ -1,6 +1,6 @@
 <template>
   <div class="special-list">
-    <div class="arrow-left arrow" v-if="this.dataList.length > 7">
+    <div class="special-list-left" v-if="this.dataList.length > 7">
       <div class="arrow-content" @click="arrowClick('backward')">
         <i class="el-icon-arrow-left"></i>
       </div>
@@ -14,8 +14,8 @@
               <img :src="item.url" alt="" />
             </div>
             <div class="instance-item-right">
-              {{ item.state }}
               <!-- {{ transformDictByValue("special_status", item.state) }} -->
+              <!-- {{ item.state }} -->
             </div>
           </div>
 
@@ -23,7 +23,7 @@
             {{ item.topicName }}
           </div>
           <div class="special-select-container">
-            <span>批次号</span>
+            <span>批次</span>
             <el-select class="special-select" v-model="batchCodeList[index]" placeholder="请选择" @change="selectChange" filterable :disabled="currentIndex !== index">
               <el-option v-for="item in batchList[index]" :key="item.batchCode" :label="item.name" :value="item.batchCode"> </el-option>
             </el-select>
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <div class="arrow-right arrow" v-if="this.dataList.length > 7">
+    <div class="special-list-right" v-if="this.dataList.length > 7">
       <div class="arrow-content" @click="arrowClick('forward')">
         <i class="el-icon-arrow-right"></i>
       </div>
@@ -66,21 +66,21 @@ export default {
       itemWidth: null,
       //   transformDictByValue,
       imgList: [report_1, report_2, report_3, report_4, report_5, report_6],
+      batchCodeList: [],
+      // testData: [],
     };
   },
   computed: {
     batchList() {
       let res = [];
       res = this.specialList.map((item) => {
+        this.batchCodeList.push(item.batchList[0].batchCode);
         return item.batchList;
       });
       return res;
     },
-    batchCodeList() {
-      return this.batchList.map((item) => {
-        return item[0].batchCode;
-      });
-    },
+    // batchCodeList() {
+    // },
     dataList() {
       let res = this.specialList.map((item) => {
         item.url = this.imgList[parseInt(Math.random() * 6)];
@@ -134,34 +134,34 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "@/scss/index.scss";
 .special-list {
   background-color: #fff;
   box-sizing: border-box;
   padding-top: 10px;
-  // border: 1px solid red;
-  .arrow {
-    display: inline-block;
+  display: flex;
+  &-left,
+  &-right {
     box-sizing: border-box;
     width: 30px;
-    line-height: 12vh;
     padding: 0 5px;
-    vertical-align: top;
     &:hover {
       cursor: pointer;
     }
     .arrow-content {
-      display: inline-block;
       background-color: #f5f5f5;
-      height: 100%;
       border-radius: 5px;
-      text-align: center;
       width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 1px solid #eee;
     }
   }
   .instance-container {
+    // display: inline-block;
     white-space: nowrap;
-    vertical-align: top;
     overflow-y: hidden;
     overflow-x: scroll;
     &::-webkit-scrollbar {
@@ -169,18 +169,16 @@ export default {
       height: 0;
       width: 0;
     }
-    display: inline-block;
     width: calc(100% - 60px);
     .instance-wrap {
       box-sizing: border-box;
       display: inline-block;
       width: calc(100% / 7);
       padding: 0 5px;
-      // border: 1px solid blue;
       .instance-item {
-        min-height: 12vh;
+        // min-height: 12vh;
         border-radius: 5px;
-        background-color: #f5f5f5;
+        background-color: $instanceBgColor;
         border: 1px solid #eee;
         padding: 10px;
         box-sizing: border-box;
@@ -220,7 +218,7 @@ export default {
         }
       }
       .instance-item.active {
-        background-color: #f5e8ea;
+        background-color: $instanceActiveBgColor;
       }
     }
   }
@@ -236,8 +234,10 @@ export default {
   .special-select {
     flex: 1;
   }
-  ::v-deep .special-select .el-input--small .el-input__inner {
+  ::v-deep .special-select .el-input__inner {
     background-color: rgba(255, 255, 255, 0);
+    border: none;
+    text-align: center;
   }
 }
 </style>
