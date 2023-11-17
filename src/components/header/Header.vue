@@ -39,7 +39,7 @@ export default {
     align-items: center;
     justify-content: center;
     .logo {
-      background: url("~@/assets/wangyi.png") 0 -20px no-repeat;
+      background: url('~@/assets/wangyi.png') 0 -20px no-repeat;
       width: 160px;
       height: 34px;
     }

@@ -22,12 +22,11 @@ export default {
   render(h) {
     h = this.$createElement;
     const { onInputHandle, $attrs } = this;
-
     return h('el-input', {
       props: {
         type: 'text',
         value: this.newValue,
-        ...this.$attrs,
+        ...$attrs,
       },
       on: {
         input: onInputHandle,

@@ -53,7 +53,6 @@ const defaultProps = {
 };
 
 export default {
-  name: 'YbTreeSelect',
   model: {
     prop: 'value',
     event: 'change',

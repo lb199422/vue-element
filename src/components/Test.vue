@@ -51,7 +51,7 @@
 
 <script>
 import YearRange from '@/components/YearRange.vue';
-import SelectTree from '@/components/SelectTree.vue';
+import SelectTree from '@/components/TreeSelect.vue';
 import HalfYearRange from '@/components/HalfYearRange.vue';
 import QuarterRange from '@/components/QuarterRange.vue';
 import CommonDrawer from '@/components/CommonDrawer.vue';
