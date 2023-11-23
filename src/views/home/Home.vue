@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import BaseNav from "@/components/BaseNav.vue";
-import { getSwiperInfo } from "@/services/homeService.js";
+import BaseNav from '@/components/BaseNav.vue';
+import { getSwiperInfo } from '@/services/homeService.js';
 export default {
   components: {
     BaseNav,
@@ -17,11 +17,11 @@ export default {
   data() {
     return {
       navInfo: [
-        { title: "个性推荐", path: "/home/recommend" },
-        { title: "歌单", path: "/home/musiclist" },
-        { title: "排行榜", path: "/home/ranklist" },
-        { title: "歌手", path: "/home/singerlist" },
-        { title: "最新音乐", path: "/home/newmusic" },
+        { title: '个性推荐', path: '/home/recommend' },
+        { title: '歌单', path: '/home/musiclist' },
+        { title: '排行榜', path: '/home/ranklist' },
+        { title: '歌手', path: '/home/singerlist' },
+        { title: '最新音乐', path: '/home/newmusic' },
       ],
     };
   },
@@ -38,7 +38,7 @@ export default {
           console.log(error);
           this.$message({
             message: error,
-            type: "error",
+            type: 'error',
           });
         });
     },

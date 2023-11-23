@@ -1,68 +1,75 @@
 <template>
   <div class="layout">
-    <!-- 头部 -->
-    <Header></Header>
-    <div class="container">
-      <div class="aside">
-        <AsideList :list-info="listInfo"></AsideList>
-      </div>
-      <div class="main">
-        <router-view></router-view>
-      </div>
-    </div>
-    <Footer></Footer>
+    <div>this is layout</div>
+    <el-menu
+      default-active="1-4-1"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
+      :collapse="isCollapse"
+    >
+      <el-submenu index="1">
+        <template slot="title">
+          <i class="el-icon-location"></i>
+          <span slot="title">导航一</span>
+        </template>
+        <el-menu-item-group>
+          <span slot="title">分组一</span>
+          <el-menu-item index="1-1">选项1</el-menu-item>
+          <el-menu-item index="1-2">选项2</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group title="分组2">
+          <el-menu-item index="1-3">选项3</el-menu-item>
+        </el-menu-item-group>
+        <el-submenu index="1-4">
+          <span slot="title">选项4</span>
+          <el-menu-item index="1-4-1">选项1</el-menu-item>
+        </el-submenu>
+      </el-submenu>
+      <el-menu-item index="2">
+        <i class="el-icon-menu"></i>
+        <span slot="title">导航二</span>
+      </el-menu-item>
+      <el-menu-item index="3" disabled>
+        <i class="el-icon-document"></i>
+        <span slot="title">导航三</span>
+      </el-menu-item>
+      <el-menu-item index="4">
+        <i class="el-icon-setting"></i>
+        <span slot="title">导航四</span>
+      </el-menu-item>
+    </el-menu>
   </div>
 </template>
 
 <script>
-import Footer from '@/components/footer/Footer.vue';
-import Header from '@/components/header/Header.vue';
-import AsideList from '@/components/AsideList.vue';
-
 export default {
-  components: {
-    Footer,
-    Header,
-    AsideList,
-  },
+  components: {},
   data() {
     return {
-      listInfo: [
-        { title: '发现音乐', path: '/home' },
-        { title: '视频', path: '/video' },
-        { title: '私人FMM', path: '/home' },
-        { title: '我的音乐', path: '/home' },
-        { title: '每日推荐', path: '/home' },
-        { title: '最近播放', path: '/home' },
-        { title: '我的收藏', path: '/home' },
-        { title: '创建的歌单', path: '/home' },
-        { title: '收藏的歌单', path: '/home' },
-      ],
+      isCollapse: false,
     };
+  },
+  methods: {
+    handleOpen() {
+      console('open');
+    },
+    handleClose() {
+      console.log('close');
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
 .layout {
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   background-color: #fff;
-  position: relative;
-  .container {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    bottom: 80px;
-    display: flex;
-    .aside {
-      width: 200px;
-    }
-    .main {
-      flex: 1;
-      overflow: auto;
-    }
-  }
+}
+
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
 }
 </style>

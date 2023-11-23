@@ -45,7 +45,7 @@ const request = function (options) {
 
   // 响应
   instance.interceptors.response.use(
-    ({ status, config, headers, data }) => {
+    ({ data }) => {
       // 关闭loading
       closeLoading(showLoading);
       console.log('this is response', data);
@@ -74,21 +74,6 @@ function closeLoading(showLoading) {
   if (LoadingInstance.count > 0 && showLoading) LoadingInstance.count--;
   if (LoadingInstance.count === 0) {
     LoadingInstance.target.close();
-  }
-}
-
-/**
- *  handleError
- */
-
-function handleError(error) {
-  let message = '';
-  if (error && error.response) {
-    switch (error.response.status) {
-      case 404:
-        message = '路径不存在';
-        break;
-    }
   }
 }
 export default request;

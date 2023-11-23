@@ -134,7 +134,7 @@ export default {
         this.createFlow(this.flowData);
       });
     },
-    createFlow(flowData) {
+    createFlow() {
       const instance = newInstance({
         container: document.getElementById('flow'),
         connector: {

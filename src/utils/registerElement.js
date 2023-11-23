@@ -15,6 +15,10 @@ import {
   FormItem,
   Descriptions,
   DescriptionsItem,
+  Menu,
+  MenuItem,
+  MenuItemGroup,
+  Submenu,
 } from 'element-ui';
 
 const elementsList = [
@@ -33,6 +37,10 @@ const elementsList = [
   FormItem,
   Descriptions,
   DescriptionsItem,
+  Menu,
+  MenuItem,
+  MenuItemGroup,
+  Submenu,
 ];
 
 export default (vue) => {

@@ -7,44 +7,10 @@ const routes = [
   {
     path: '/',
     redirect: '/home',
+  },
+  {
+    path: '/home',
     component: () => import('@/views/layout/Layout.vue'),
-    children: [
-      {
-        path: '/home',
-        redirect: '/home/recommend',
-        component: () => import('@/views/home/Home.vue'),
-        children: [
-          {
-            path: '/home/recommend',
-            component: () => import('@/views/home/recommend/Recommend.vue'),
-          },
-          {
-            path: '/home/musiclist',
-            component: () => import('@/views/home/musicList/MusicList.vue'),
-          },
-          {
-            path: '/home/newmusic',
-            component: () => import('@/views/home/newMusic/NewMusic.vue'),
-          },
-          {
-            path: '/home/ranklist',
-            component: () => import('@/views/home/rankList/RankList.vue'),
-          },
-          {
-            path: '/home/singerlist',
-            component: () => import('@/views/home/singerList/SingerList.vue'),
-          },
-          {
-            path: '/flow',
-            component: () => import('@/views/flow/index.vue'),
-          },
-        ],
-      },
-      {
-        path: '/video',
-        component: () => import('@/views/video/Video.vue'),
-      },
-    ],
   },
   {
     path: '/login',

@@ -34,7 +34,7 @@ export default {
         .then((res) => {
           this.swiperInfo = res.banners;
         })
-        .catch((error) => {});
+        .catch(() => {});
     },
     getRecommendData() {
       getPersonRecommendList()
