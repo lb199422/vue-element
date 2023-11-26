@@ -69,8 +69,6 @@
         :align="align"
         :prefix-icon="prefixIcon"
         :clear-icon="clearIcon"
-        value-format=""
-        format=""
         @focus="handleFocus"
         @blur="handleBlur"
       >
@@ -243,7 +241,7 @@ export default {
         this.$emit('dateChange', []);
       } else {
         this.$refs['date-picker'].userInput = this.value.map((item) => {
-          let year = item.slice(0, 4);
+          let year = item.slice(0, 4) + '年';
           let quarter = item.slice(-1);
           quarter =
             quarter === '1'

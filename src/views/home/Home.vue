@@ -9,7 +9,6 @@
 
 <script>
 import BaseNav from '@/components/BaseNav.vue';
-import { getSwiperInfo } from '@/services/homeService.js';
 export default {
   components: {
     BaseNav,
@@ -25,24 +24,8 @@ export default {
       ],
     };
   },
-  created() {
-    this.getSwiperData();
-  },
-  methods: {
-    getSwiperData() {
-      getSwiperInfo()
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((error) => {
-          console.log(error);
-          this.$message({
-            message: error,
-            type: 'error',
-          });
-        });
-    },
-  },
+  created() {},
+  methods: {},
 };
 </script>
 

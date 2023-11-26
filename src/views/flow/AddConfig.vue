@@ -116,7 +116,7 @@ export default {
   methods: {
     show(config) {
       let { type, data } = config;
-      console.log(type, data);
+      console.log(type, data, Object.keys(data));
       this.currentType = type;
       this.$refs['yb-drawer'].show();
     },
