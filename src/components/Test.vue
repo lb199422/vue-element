@@ -46,6 +46,15 @@
 
     <Jsx :title-level="1">测试jsx</Jsx> 测试
     <CommonDescription :description-list="descriptionList" />
+    <h3>测试common-select {{ selectValue }}</h3>
+    <div>
+      <CommonSelect
+        v-model="selectValue"
+        :multiple="true"
+        :options="options"
+        :isShowCheckBox="true"
+      />
+    </div>
   </div>
 </template>
 
@@ -58,6 +67,7 @@ import CommonDrawer from '@/components/CommonDrawer.vue';
 import RenderTest from '@/components/RenderTest.vue';
 import Jsx from '@/components/Jsx.vue';
 import CommonDescription from '@/components/CommonDescription.vue';
+import CommonSelect from '@/components/CommonSelect.vue';
 export default {
   components: {
     YearRange,
@@ -68,6 +78,7 @@ export default {
     RenderTest,
     Jsx,
     CommonDescription,
+    CommonSelect,
   },
   data() {
     return {
@@ -174,6 +185,21 @@ export default {
           valueText: '战鹰',
           type: 'text',
           isShow: 1,
+        },
+      ],
+      selectValue: [],
+      options: [
+        {
+          label: '测试1',
+          value: 1,
+        },
+        {
+          label: '测试2',
+          value: 2,
+        },
+        {
+          label: '测试3',
+          value: 3,
         },
       ],
     };

@@ -19,6 +19,8 @@ import {
   MenuItem,
   MenuItemGroup,
   Submenu,
+  CheckboxGroup,
+  Checkbox,
 } from 'element-ui';
 
 const elementsList = [
@@ -41,6 +43,8 @@ const elementsList = [
   MenuItem,
   MenuItemGroup,
   Submenu,
+  CheckboxGroup,
+  Checkbox,
 ];
 
 export default (vue) => {
