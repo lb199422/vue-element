@@ -38,7 +38,7 @@
 export default {
   props: {
     value: {
-      type: [String, Array],
+      type: [Array, Number, String, Boolean],
       required: true,
     },
     placeholder: {
