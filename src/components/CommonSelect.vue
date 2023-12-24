@@ -35,6 +35,8 @@
 </template>
 
 <script>
+//TODO
+// 全选功能  远程分页搜索查询  添加前后插槽
 export default {
   props: {
     value: {
