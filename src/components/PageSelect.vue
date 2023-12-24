@@ -1,6 +1,17 @@
 <template>
   <div>
-    <CommonSelect v-model="selectValue" v-bind="$attrs" v-on="$listeners" />
+    <CommonSelect v-model="selectValue" v-bind="$attrs" v-on="$listeners">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-sizes="[100, 200, 300, 400]"
+        :page-size="100"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="400"
+      >
+      </el-pagination>
+    </CommonSelect>
   </div>
 </template>
 
@@ -23,6 +34,11 @@ export default {
       type: Function,
     },
   },
+  data() {
+    return {
+      currentPage: 1,
+    };
+  },
   computed: {
     selectValue: {
       get() {
@@ -33,8 +49,9 @@ export default {
       },
     },
   },
-  data() {
-    return {};
+  methods: {
+    handleSizeChange() {},
+    handleCurrentChange() {},
   },
 };
 </script>

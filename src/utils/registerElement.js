@@ -21,6 +21,7 @@ import {
   Submenu,
   CheckboxGroup,
   Checkbox,
+  Pagination,
 } from 'element-ui';
 
 const elementsList = [
@@ -45,6 +46,7 @@ const elementsList = [
   Submenu,
   CheckboxGroup,
   Checkbox,
+  Pagination,
 ];
 
 export default (vue) => {
